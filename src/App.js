@@ -34,7 +34,7 @@ function App() {
     const changedTodos = todos.map(todo => {
 
       const todoEdit = {
-        ...todo,
+        ...todo, // los tres puntos y el nombre significa que es una copia de los atributos que tiene el todo
         completed: !todo.completed
       }
 
