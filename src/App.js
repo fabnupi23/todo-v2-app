@@ -25,9 +25,26 @@ function App() {
 
   //Acción para elimminar un Todo
   const todoDelete = (todoId) => {
-
     const changedTodos = todos.filter(todo => todo.id !==todoId);
+    setTodos(changedTodos);
+  }
 
+  //Acción para dar por terminada una tarea
+  const todoToogleCompleted = (todoId) =>{
+    const changedTodos = todos.map(todo => {
+
+      const todoEdit = {
+        ...todo,
+        completed: !todo.completed
+      }
+
+      if (todo.id === todoId) {
+        return todoEdit        
+      }else{
+        return todo
+      }
+
+    })
     setTodos(changedTodos);
   }
 
@@ -39,6 +56,7 @@ function App() {
           <TodoList 
             todos={todos}
             todoDelete={todoDelete}
+            todoToogleCompleted={todoToogleCompleted}
           />
         </div>  
         <div className='col-4'>

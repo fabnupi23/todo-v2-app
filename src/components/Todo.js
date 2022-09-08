@@ -1,13 +1,15 @@
 import React from 'react'
 
-function Todo({ todo, todoDelete }) {
+function Todo({ todo, todoDelete, todoToogleCompleted }) {
 
   return (
     <div className='card mt-2'>
         <div className='card-body'>
             <h3 className='card-title text-right'>
                 {todo.title}
-                <button className='btn btn-sm btn-outline-success ml-2'>Terminar</button>
+                <button onClick={() => todoToogleCompleted(todo.id)} className={`btn btn-sm ${todo.completed ? 'btn-outline-success' : 'btn-success'} ml-2`}>
+                    {todo.completed ? 'Terminado' : 'Terminar'}
+                </button>
             </h3>
             <p className='card-text text-right'>
                 {todo.description}
