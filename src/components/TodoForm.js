@@ -25,6 +25,10 @@ function TodoForm({ todoAdd }) {
 
   const handleSubmit = (e) => {  //Esta arrowFunction se encargara de hacer el submit el formulario, agregar la nueva tarea
     e.preventDefault();
+
+    if(title === ''){
+      return;
+    }
     
     //Crear función para afregar una nueva tarea
     todoAdd(formValues);
