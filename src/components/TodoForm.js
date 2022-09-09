@@ -39,6 +39,7 @@ function TodoForm({ todoAdd }) {
     
     //Crear función para afregar una nueva tarea
     todoAdd(formValues);
+    setFormValues(initialFormValues);
     setError(null);
   }
 
