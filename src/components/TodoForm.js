@@ -12,6 +12,7 @@ function TodoForm({ todoAdd }) {
   const [formValues, setFormValues] = useState(initialFormValues)
   const {title, description} = formValues;
   const [error, setError] = useState(null);
+  const [successMessage, setSuccessMessage] = useState(null);
 
   //Función (arrowFunction) para controlar el cambio de cada uno de los inputs del formulario
   const handleInputChange = (e) =>{
@@ -40,6 +41,12 @@ function TodoForm({ todoAdd }) {
     //Crear función para afregar una nueva tarea
     todoAdd(formValues);
     setFormValues(initialFormValues);
+    setSuccessMessage('Agregado con éxito');
+
+    setTimeout(() => {
+      setSuccessMessage(null);
+    }, 2000);
+
     setError(null);
   }
 
@@ -74,6 +81,15 @@ function TodoForm({ todoAdd }) {
         ? (
           <div className='alert alert-danger mt-2'>
             { error } 
+          </div>
+        ) : null
+      }
+
+      {
+        successMessage 
+        ? (
+          <div className='alert alert-success mt-2'>
+            { successMessage } 
           </div>
         ) : null
       }
