@@ -11,6 +11,7 @@ function TodoForm({ todoAdd }) {
   //Creamos un nuevo state
   const [formValues, setFormValues] = useState(initialFormValues)
   const {title, description} = formValues;
+  const [error, setError] = useState(null);
 
   //Función (arrowFunction) para controlar el cambio de cada uno de los inputs del formulario
   const handleInputChange = (e) =>{
@@ -26,12 +27,19 @@ function TodoForm({ todoAdd }) {
   const handleSubmit = (e) => {  //Esta arrowFunction se encargara de hacer el submit el formulario, agregar la nueva tarea
     e.preventDefault();
 
-    if(title === ''){
+    if(title.trim() === ''){
+      setError('Debes indicar un título');
+      return;
+    }
+
+    if(description.trim() === ''){
+      setError('Debes indicar una descripción');
       return;
     }
     
     //Crear función para afregar una nueva tarea
     todoAdd(formValues);
+    setError(null);
   }
 
   return (
@@ -58,6 +66,21 @@ function TodoForm({ todoAdd }) {
         <button 
           className='btn btn-primary btn-block mt-2'>Agregar Tarea</button>
       </form>
+
+
+      {
+        error 
+        ? (
+          <div className='alert alert-danger mt-2'>
+            { error } 
+          </div>
+        ) : null
+      }
+
+
+
+      
+      
     </div>
   )
 }
