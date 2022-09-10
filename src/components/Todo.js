@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Todo({ todo, todoDelete, todoToogleCompleted }) {
+function Todo({ todo, todoDelete, todoToogleCompleted, setTodoEdit }) {
 
   return (
     <div className='card mt-2'>
@@ -16,7 +16,7 @@ function Todo({ todo, todoDelete, todoToogleCompleted }) {
             </p>
             <hr/>
             <div className='d-flex justify-content-end'>
-                <button className='btn btn-sm btn-outline-primary mr-2'>
+                <button onClick={() => setTodoEdit(todo)} className='btn btn-sm btn-outline-primary mr-2'>
                     Editar
                 </button>
                 <button onClick={() => todoDelete(todo.id)} className='btn btn-sm btn-outline-danger'>

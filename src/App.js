@@ -22,6 +22,7 @@ const initialTodos  = [
 function App() {
 
   const [todos, setTodos] = useState(initialTodos);
+  const [todoEdit, setTodoEdit] = useState(null);     //Este estado contiene la tarea que se esta actualizando actualmente
 
   //Acción para elimminar un Todo
   const todoDelete = (todoId) => {
@@ -45,6 +46,15 @@ function App() {
       }
 
     })
+    setTodos(changedTodos);
+  }
+
+  const todoUpdate = (todoEdit) => {
+
+    const changedTodos = todos.map(todo => (
+      todo.id === todoEdit.id ? todoEdit : todo 
+    ))
+
     setTodos(changedTodos);
   }
 
@@ -73,11 +83,14 @@ function App() {
             todos={todos}
             todoDelete={todoDelete}
             todoToogleCompleted={todoToogleCompleted}
+            setTodoEdit={setTodoEdit}
           />
         </div>  
         <div className='col-4'>
           <TodoForm 
             todoAdd={todoAdd}
+            todoEdit={todoEdit}
+            todoUpdate={todoUpdate}
           />
         </div>        
       </div>

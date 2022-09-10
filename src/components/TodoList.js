@@ -3,7 +3,7 @@ import { Todo } from './Todo';
 
 
 
-function TodoList({ todos, todoDelete, todoToogleCompleted }) {
+function TodoList({ todos, todoDelete, todoToogleCompleted, setTodoEdit }) {
   return (
     <div>
       <h1 className="text-right">Soy TodoList</h1>
@@ -15,6 +15,7 @@ function TodoList({ todos, todoDelete, todoToogleCompleted }) {
             key={todo.id} 
             todoDelete={todoDelete}
             todoToogleCompleted={todoToogleCompleted}
+            setTodoEdit={setTodoEdit}
           />
         ))
       }
