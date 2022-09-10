@@ -26,6 +26,11 @@ function App() {
 
   //Acción para elimminar un Todo
   const todoDelete = (todoId) => {
+
+    if(todoEdit && todoId === todoEdit.id){
+      setTodoEdit(null);
+    }
+
     const changedTodos = todos.filter(todo => todo.id !==todoId);
     setTodos(changedTodos);
   }

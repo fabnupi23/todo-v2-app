@@ -17,6 +17,8 @@ function TodoForm({ todoAdd, todoEdit, todoUpdate, setTodoEdit }) {
   useEffect(() => {
     if(todoEdit){
       setFormValues(todoEdit);
+    }else{
+      setFormValues(initialFormValues);
     }
     
   }, [todoEdit])

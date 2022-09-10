@@ -9,15 +9,21 @@ function TodoList({ todos, todoDelete, todoToogleCompleted, setTodoEdit }) {
       <h1 className="text-right">Soy TodoList</h1>
 
       {
-        todos.map(todo => (
-          <Todo 
-            todo={todo} 
-            key={todo.id} 
-            todoDelete={todoDelete}
-            todoToogleCompleted={todoToogleCompleted}
-            setTodoEdit={setTodoEdit}
-          />
-        ))
+        todos.length === 0
+        ? (
+          <div className='alert alert-primary'>No hay tareas. Por favor agregar{" :D"} </div>
+        )
+        : (
+          todos.map(todo => (
+            <Todo 
+              todo={todo} 
+              key={todo.id} 
+              todoDelete={todoDelete}
+              todoToogleCompleted={todoToogleCompleted}
+              setTodoEdit={setTodoEdit}
+            />
+          ))
+        )
       }
     </div>
   )
