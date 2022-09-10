@@ -6,7 +6,7 @@ const initialFormValues = {
 }
 
 
-function TodoForm({ todoAdd, todoEdit, todoUpdate }) {
+function TodoForm({ todoAdd, todoEdit, todoUpdate, setTodoEdit }) {
 
   //Creamos un nuevo state
   const [formValues, setFormValues] = useState(initialFormValues)
@@ -68,8 +68,8 @@ function TodoForm({ todoAdd, todoEdit, todoUpdate }) {
       <h1>{todoEdit ? 'Editar Tarea' : 'Nueva Tarea'}</h1>
 
       {
-        todoEdit && 
-        <button className='btn btn-sm btn-warning mb-2'>
+        todoEdit &&  
+        <button onClick={() => setTodoEdit(null)} className='btn btn-sm btn-warning mb-2'>
           Cancelar Edición
         </button>
       }

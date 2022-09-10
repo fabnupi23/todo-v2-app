@@ -91,6 +91,7 @@ function App() {
             todoAdd={todoAdd}
             todoEdit={todoEdit}
             todoUpdate={todoUpdate}
+            setTodoEdit={setTodoEdit}
           />
         </div>        
       </div>
