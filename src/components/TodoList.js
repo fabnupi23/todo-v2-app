@@ -6,7 +6,7 @@ import { Todo } from './Todo';
 function TodoList({ todos, todoDelete, todoToogleCompleted, setTodoEdit }) {
   return (
     <div>
-      <h1 className="text-right">Soy TodoList</h1>
+      <h2 className="text-right display-4">Soy TodoList</h2>
 
       {
         todos.length === 0
