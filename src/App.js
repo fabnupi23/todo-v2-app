@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { TodoForm } from './components/TodoForm';
 import { TodoList } from './components/TodoList';
 
@@ -19,15 +19,21 @@ const initialTodos  = [
   }
 ];
 
+const localTodos = JSON.parse(localStorage.getItem('todos'));
+
 function App() {
 
-  const [todos, setTodos] = useState(initialTodos);
+  const [todos, setTodos] = useState(localTodos || initialTodos);
   const [todoEdit, setTodoEdit] = useState(null);     //Este estado contiene la tarea que se esta actualizando actualmente
+
+  useEffect(() =>{    //Acá configuramos el almacenamiento en nuestro localStorage
+    localStorage.setItem('todos', JSON.stringify(todos));   //Los ToDos los convertimos a string con  JSON.stringify(parametro)
+  }, [todos])
 
   //Acción para elimminar un Todo
   const todoDelete = (todoId) => {
 
-    if(todoEdit && todoId === todoEdit.id){
+    if(todoEdit &&  todoId === todoEdit.id){
       setTodoEdit(null);
     }
 
